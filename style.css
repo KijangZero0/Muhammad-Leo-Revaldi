@@ -1,0 +1,526 @@
+/* ============================================
+   PORTFOLIO - ANDI PRATAMA
+   Professional & Elegant Dark Theme
+   ============================================ */
+
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #030303;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR CUSTOM ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ffa3;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc82;
+}
+
+/* ===== GRID BACKGROUND ===== */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ===== SCAN LINE EFFECT ===== */
+.scan-line {
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(0, 255, 163, 0.8) 50%,
+    transparent 60%
+  );
+  background-size: 100% 200%;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
+}
+
+/* ===== SEPARATOR LINE ===== */
+.sep-line {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  height: 1px;
+}
+
+/* ===== TEXT GRADIENT ===== */
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #00ffa3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== CARD HOVER ===== */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #00ffa3 !important;
+}
+
+/* ===== SKILL BAR ANIMATION ===== */
+.skill-bar-fill {
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0%;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== FLOATING ANIMATION ===== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ===== PULSE RING ===== */
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #00ffa3;
+  animation: pulse-ring-anim 2s ease-out infinite;
+}
+
+@keyframes pulse-ring-anim {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ===== TYPING CURSOR BLINK ===== */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* ===== PROJECT CARD IMAGE ===== */
+.project-img {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(40%);
+}
+
+.project-card:hover .project-img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* ===== NAVIGATION LINKS ===== */
+.nav-link {
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #00ffa3;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
+  color: #00ffa3;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== TIMELINE DOT GLOW ===== */
+.timeline-dot {
+  box-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
+}
+
+/* ===== 3D PERSPECTIVE ===== */
+.perspective-container {
+  perspective: 2000px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+}
+
+/* ===== STAT GLOW TEXT ===== */
+.stat-glow {
+  text-shadow: 0 0 20px rgba(0, 255, 163, 0.3);
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.mobile-menu.open {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ===== GLOW ORB (Background Decoration) ===== */
+.glow-orb {
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC STYLES
+   ============================================ */
+
+/* ===== NAVBAR ===== */
+#navbar {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== CTA BUTTON GLOW ===== */
+.btn-mint-glow {
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-mint-glow:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 255, 163, 0.4);
+}
+
+.btn-white-solid {
+  transition: transform 0.2s ease;
+}
+
+.btn-white-solid:hover {
+  transform: scale(1.02);
+}
+
+/* ===== SOCIAL ICON ===== */
+.social-icon {
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #00ffa3;
+  border-color: rgba(0, 255, 163, 0.3);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.scroll-dot {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ===== BACK TO TOP ===== */
+#backToTop {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#backToTop:hover {
+  color: #00ffa3;
+  border-color: rgba(0, 255, 163, 0.3);
+}
+
+/* ===== CONTACT FORM INPUTS ===== */
+.form-input {
+  background: #030303;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: rgba(136, 136, 136, 0.5);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgba(0, 255, 163, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 255, 163, 0.05);
+}
+
+.form-input:hover:not(:focus) {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== TECH GRID ICON CARD ===== */
+.tech-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.tech-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #00ffa3 !important;
+  transform: translateY(-2px);
+}
+
+/* ===== PROJECT OVERLAY BUTTONS ===== */
+.project-overlay-btn {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-overlay-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-overlay-btn:hover {
+  color: #00ffa3;
+  border-color: rgba(0, 255, 163, 0.3);
+}
+
+/* ===== PROJECT TITLE HOVER ===== */
+.project-title {
+  transition: color 0.2s ease;
+}
+
+.project-card:hover .project-title {
+  color: #00ffa3;
+}
+
+/* ===== CONTACT INFO CARD ===== */
+.contact-info-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-info-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #00ffa3 !important;
+}
+
+.contact-info-card:hover .contact-icon-wrap {
+  background: rgba(0, 255, 163, 0.2);
+}
+
+.contact-info-card:hover .contact-value {
+  color: #00ffa3;
+}
+
+.contact-icon-wrap {
+  transition: background 0.3s ease;
+}
+
+.contact-value {
+  transition: color 0.2s ease;
+}
+
+/* ===== TESTIMONIAL CARD ===== */
+.testimonial-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.testimonial-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #00ffa3 !important;
+}
+
+/* ===== FOOTER LINK ===== */
+.footer-link {
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: #00ffa3;
+}
+
+.footer-social {
+  transition: all 0.3s ease;
+}
+
+.footer-social:hover {
+  color: #00ffa3;
+  border-color: rgba(0, 255, 163, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* ===== TABLET (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  .grid-bg {
+    background-size: 30px 30px;
+  }
+
+  .reveal {
+    transform: translateY(20px);
+  }
+
+  .glow-orb {
+    filter: blur(80px);
+  }
+}
+
+/* ===== MOBILE SMALL (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  .grid-bg {
+    background-size: 20px 20px;
+  }
+
+  .scan-line {
+    animation-duration: 6s;
+  }
+}
+
+/* ===== LARGE SCREEN (min-width: 1280px) ===== */
+@media (min-width: 1280px) {
+  .glow-orb {
+    filter: blur(150px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & REDUCED MOTION
+   ============================================ */
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .skill-bar-fill {
+    transition: none;
+  }
+
+  .card-3d {
+    transition: none;
+  }
+
+  .project-img {
+    transition: none;
+    filter: none;
+  }
+}
+
+/* ===== FOCUS VISIBLE (Keyboard Navigation) ===== */
+:focus-visible {
+  outline: 2px solid #00ffa3;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #00ffa3;
+  outline-offset: 2px;
+}
+
+/* ===== SELECTION COLOR ===== */
+::selection {
+  background: rgba(0, 255, 163, 0.2);
+  color: #ffffff;
+}
